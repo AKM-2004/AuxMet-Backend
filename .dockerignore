@@ -1,0 +1,19 @@
+# Ignore node_modules - it will be reinstalled inside the container
+node_modules
+
+# Ignore log files
+*.log
+
+# Ignore the dist directory if code is compiled inside the container
+dist
+
+# Ignore sensitive environment variables
+.env
+
+# Ignore Docker-related files to avoid recursion or unnecessary copying
+Dockerfile*
+.dockerignore
+
+# Ignore Git-related files
+.git
+.gitignore
