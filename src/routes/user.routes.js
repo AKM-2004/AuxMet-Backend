@@ -32,7 +32,7 @@ router
 router.route("/auth/google/callback").get(
     // this for runnig the callback
     passport.authenticate("google", {
-        failureRedirect: "http://localhost:5173/",
+        failureRedirect: `${process.env.FRONT_END_LINK}/`,
         session: false,
     }),
     (req, res) => {
