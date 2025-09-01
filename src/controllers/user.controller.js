@@ -83,7 +83,7 @@ const UserRegister = asyncHandler(async (req, res) => {
 
     const options = {
         httpOnly: true,
-        secure: true,
+        secure: false,
     };
 
     return res
@@ -127,7 +127,7 @@ const userLogin = asyncHandler(async (req, res, next) => {
 
     const options = {
         httpOnly: true,
-        secure: true,
+        secure: false,
     };
     return res
         .status(200)
@@ -155,7 +155,7 @@ const userLogout = asyncHandler(async (req, res) => {
 
     const options = {
         httpOnly: true,
-        secure: true,
+        secure: false,
     };
 
     return res
@@ -191,7 +191,7 @@ const refreshaccesstoken = asyncHandler(async (req, res) => {
 
         const options = {
             httpOnly: true,
-            secure: true,
+            secure: false,
         };
         const { accessToken, refreshToken } = await generateAcessRefreshTokens(
             user._id
@@ -252,7 +252,9 @@ const getCurrentUser = asyncHandler(async (req, res) => {
 });
 
 const updateUserdetails = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.user?._id).select("-password -refreshToken");
+    const user = await User.findById(req.user?._id).select(
+        "-password -refreshToken"
+    );
 
     if (!user) {
         throw new ApiError(404, "user not found");
@@ -275,7 +277,8 @@ const updateUserdetails = asyncHandler(async (req, res) => {
     }
     if (userName !== user.userName) {
         user.userName = userName;
-        await user.save()
+        await user
+            .save()
             .then()
             .catch(() => {
                 throw new ApiError(

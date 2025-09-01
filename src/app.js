@@ -6,7 +6,13 @@ import chatRouter from "./routes/interview.router.js";
 import router from "./routes/user.routes.js";
 const app = express();
 
-app.use(cors()); // cross origin Resource sharing
+app.use(
+    cors({
+        origin: "http://auxmet.com", // frontend URL
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true,
+    })
+); // cross origin Resource sharing
 app.use(express.json({ limit: "16kb" }));
 app.use(express.urlencoded()); // parse the content-type and send it to the request
 app.use(express.static("public"));
