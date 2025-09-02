@@ -83,7 +83,7 @@ const UserRegister = asyncHandler(async (req, res) => {
 
     const options = {
         httpOnly: true,
-        secure: false,
+        secure: true,
     };
 
     return res
@@ -127,7 +127,7 @@ const userLogin = asyncHandler(async (req, res, next) => {
 
     const options = {
         httpOnly: true,
-        secure: false,
+        secure: true,
     };
     return res
         .status(200)
@@ -155,7 +155,7 @@ const userLogout = asyncHandler(async (req, res) => {
 
     const options = {
         httpOnly: true,
-        secure: false,
+        secure: true,
     };
 
     return res
@@ -191,7 +191,7 @@ const refreshaccesstoken = asyncHandler(async (req, res) => {
 
         const options = {
             httpOnly: true,
-            secure: false,
+            secure: true,
         };
         const { accessToken, refreshToken } = await generateAcessRefreshTokens(
             user._id

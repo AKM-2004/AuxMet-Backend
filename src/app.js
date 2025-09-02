@@ -8,7 +8,7 @@ const app = express();
 
 app.use(
     cors({
-        origin: "http://auxmet.com", // frontend URL
+        origin: ["https://auxmet.com","http://62.72.58.72"], // frontend URL
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
         credentials: true,
     })

@@ -46,7 +46,7 @@ const isResumePresent = asyncHandler(async (req, res) => {
     }
 
     const resume = await Resume.findOne({ user_id: user_id });
-    const isresume = true;
+    let isresume = true;
 
     if (!resume) {
         isresume = false;
