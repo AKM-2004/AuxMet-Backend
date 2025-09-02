@@ -40,6 +40,8 @@ router.route("/auth/google/callback").get(
         const options = {
             httpOnly: true,
             secure: true,
+            sameSite: "None",
+            domain: ".auxmet.com", // <-- works for api.auxmet.com & apibot.auxmet.com
         };
 
         res.status(201)

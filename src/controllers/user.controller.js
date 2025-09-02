@@ -84,6 +84,8 @@ const UserRegister = asyncHandler(async (req, res) => {
     const options = {
         httpOnly: true,
         secure: true,
+        sameSite: "None",
+        domain: ".auxmet.com", // <-- works for api.auxmet.com & apibot.auxmet.com
     };
 
     return res
@@ -128,6 +130,9 @@ const userLogin = asyncHandler(async (req, res, next) => {
     const options = {
         httpOnly: true,
         secure: true,
+        sameSite: "None",
+        domain: ".auxmet.com", // <-- works for api.auxmet.com & apibot.auxmet.com
+        
     };
     return res
         .status(200)
@@ -156,6 +161,8 @@ const userLogout = asyncHandler(async (req, res) => {
     const options = {
         httpOnly: true,
         secure: true,
+        sameSite: "None",
+        domain: ".auxmet.com", // <-- works for api.auxmet.com & apibot.auxmet.com
     };
 
     return res
@@ -192,6 +199,8 @@ const refreshaccesstoken = asyncHandler(async (req, res) => {
         const options = {
             httpOnly: true,
             secure: true,
+            sameSite: "None",
+            domain: ".auxmet.com", // <-- works for api.auxmet.com & apibot.auxmet.com
         };
         const { accessToken, refreshToken } = await generateAcessRefreshTokens(
             user._id
