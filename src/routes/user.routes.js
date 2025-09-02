@@ -39,7 +39,7 @@ router.route("/auth/google/callback").get(
         const { accessToken, refreshToken, user_data } = req.user;
         const options = {
             httpOnly: true,
-            secure: false
+            secure: true,
         };
 
         res.status(201)
